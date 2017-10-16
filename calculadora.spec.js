@@ -1,6 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const Calculadora = require('./calculadora');
+const sinon = require('sinon');
 
 describe('calculadora', function(){ // no hacer arrow functions
 
@@ -30,6 +31,16 @@ describe('calculadora', function(){ // no hacer arrow functions
     it('sumAfter() should return sum of 20 and 30', function(done){
         calculadora.sumAfter(20,30,10,(res)=>{
             expect(res).to.equal(50);
+            done();
+        });
+
+    });
+
+    it('sumAfter() should return sum of 10 and 15', function(done){
+        // hacer un mock de calculadora.sum para hacer el test independiente de este
+        sinon.stub(calculadora, 'sum').returns(25);
+        calculadora.sumAfter(10,15,10,(res)=>{
+            expect(res).to.equal(25);
             done();
         });
 
