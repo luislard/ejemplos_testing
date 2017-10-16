@@ -56,5 +56,21 @@ describe('calculadora', function(){ // no hacer arrow functions
         });
 
     });
+
+    it('sum() should have commutative property', function(){
+        const result1 = calculadora.sum(1,2);
+        const result2 = calculadora.sum(2,1);
+        expect(result1).to.equal(result2);
+    });
+
+    it('subtract() should return subtract', function(){
+        expect(calculadora.subtract(20,5)).to.equal(15);
+    });
+
+    it('subtract() should not have commutative property', function(){
+        const result1 = calculadora.subtract(20,5);
+        const result2 = calculadora.subtract(5,20);
+        expect(result1).to.not.equal(result2);
+    });
 }); 
 
