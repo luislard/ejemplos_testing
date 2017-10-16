@@ -7,7 +7,8 @@ Calculadora.prototype.sum = function(a = 0, b = 0){
 
 Calculadora.prototype.sumAfter = function(a = 0, b = 0, ms, callback){
     setTimeout(() => {
-        callback( a + b );
+        const result = this.sum(a + b);
+        callback( result );
     }, ms);
 }
 
