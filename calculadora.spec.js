@@ -18,5 +18,21 @@ describe('calculadora', function(){ // no hacer arrow functions
         expect(calculadora.sum(10,15)).to.equal(25);
 
     });
+
+    it('sumAfter() should execute callback function with the result', function(done){
+        calculadora.sumAfter(10,15,10,(res)=>{
+            expect(res).to.be.not.undefined;
+            done();
+        });
+
+    });
+
+    it('sumAfter() should return sum of 20 and 30', function(done){
+        calculadora.sumAfter(20,30,10,(res)=>{
+            expect(res).to.equal(50);
+            done();
+        });
+
+    });
 }); 
 
