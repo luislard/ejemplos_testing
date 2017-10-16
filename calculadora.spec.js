@@ -41,6 +41,17 @@ describe('calculadora', function(){ // no hacer arrow functions
         sinon.stub(calculadora, 'sum').returns(25);
         calculadora.sumAfter(10,15,10,(res)=>{
             expect(res).to.equal(25);
+            calculadora.sum.restore(); // limpiamos el stub
+            done();
+        });
+    });
+
+    it('sumAfter() should return sum of 10 and 15 ttt', function(done){
+        // hacer un mock de calculadora.sum para hacer el test independiente de este
+        sinon.stub(calculadora, 'sum').returns(25);
+        calculadora.sumAfter(10,15,10,(res)=>{
+            expect(calculadora.sum.firstCall.args).to.deep.equal([10,15]);
+            calculadora.sum.restore(); // limpiamos el stub
             done();
         });
 
