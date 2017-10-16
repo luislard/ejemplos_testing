@@ -7,5 +7,11 @@ describe('calculadora', function(){ // no hacer arrow functions
         const calculadora = new Calculadora();
         expect(calculadora.sum()).to.equal(0);
     });
+
+    it('sum() should return the sum of 10 and 15', function(){
+        const calculadora = new Calculadora();
+        expect(calculadora.sum(10,15)).to.equal(25);
+
+    });
 }); 
 
