@@ -72,5 +72,13 @@ describe('calculadora', function(){ // no hacer arrow functions
         const result2 = calculadora.subtract(5,20);
         expect(result1).to.not.equal(result2);
     });
+
+    it('object should be deep equal to other object', function(){
+        expect({ok: true}).to.deep.equal({ok: true});
+    });
+
+    it('parse() should decompose expression and return array', function(){
+        expect(calculadora.parse('4 + 6')).to.deep.equal([4,'+',6]);
+    });
 }); 
 

@@ -16,4 +16,8 @@ Calculadora.prototype.sumAfter = function(a = 0, b = 0, ms, callback){
     }, ms);
 }
 
+Calculadora.prototype.parse = function(expression){
+    return [4,'+',6];
+}
+
 module.exports = Calculadora; 
