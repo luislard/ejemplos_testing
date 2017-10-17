@@ -49,8 +49,32 @@ Calculadora.prototype.parse = function(expression){
     return result;
 }
 
-Calculadora.prototype.eval = function() {
-    return 13;
+Calculadora.prototype.eval = function(expression) {
+    let operator = null;
+    let result = null;
+    for(const item of this.parse(expression)){
+
+        // si es un operador, lo guardamos y pasamos el siguiente
+        if (this.operators.includes(item)){
+            operator = item;
+            continue;
+        }
+        // es un numero, si es el primero lo guardo en el resultado
+        if (result === null){
+            result = item;
+            continue;
+        }
+        // si no es el primero hago la operacion guardada
+        switch (operator) {
+            case '+': result += item; break;
+            case '-': result -= item; break;
+           default: 
+            throw new TypeError(`Unexpected operator ${operator} found`);
+            break;
+        }
+        operator = null;
+    }
+    return result;
 };
 
 module.exports = Calculadora; 

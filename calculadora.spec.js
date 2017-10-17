@@ -117,5 +117,13 @@ describe('calculadora', function(){ // no hacer arrow functions
     it('eval() should compute (3 + 4 + 3)', function(){
         expect(calculadora.eval('3 + 4 + 3')).to.equal(10);
     });
+
+    it('eval() should compute (3 + 4 - 3)', function(){
+        expect(calculadora.eval('3 + 4 - 3')).to.equal(4);
+    });
+
+    it('eval() should compute (3 - 4 - 3)', function(){
+        expect(calculadora.eval('3 - 4 - 3')).to.equal(-4);
+    });
 }); 
 
