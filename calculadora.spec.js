@@ -92,5 +92,18 @@ describe('calculadora', function(){ // no hacer arrow functions
     it('parse() should decompose expression 1 - 6', function(){
         expect(calculadora.parse('1 - 6')).to.deep.equal([1,'-',6]);
     });
+
+    it('parse() should throw exception with the operators (1 - + 6)', function(){
+        expect(() => calculadora.parse('1 - + 6')).to.throw();
+    });
+    // otra forma de hacer lo anterior
+    it('parse() (otra forma) should throw exception with the operators (1 - + 6)', function(){
+        const throwingFunction = calculadora.parse.bind(calculadora,'1 - + 6');
+        expect(throwingFunction).to.throw();
+    });
+
+    it('parse() should throw exception with the operators (1 + A)', function(){
+        expect(() => calculadora.parse('1 + A')).to.throw();
+    });
 }); 
 
