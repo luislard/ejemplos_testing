@@ -111,7 +111,7 @@ describe('calculadora', function(){ // no hacer arrow functions
     });
 
     it('eval() should compute (6 + 7)', function(){
-        expect(calculadora.eval(6 + 7)).to.equal(13);
+        expect(calculadora.eval('6 + 7')).to.equal(13);
     });
 }); 
 
