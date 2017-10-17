@@ -113,5 +113,9 @@ describe('calculadora', function(){ // no hacer arrow functions
     it('eval() should compute (6 + 7)', function(){
         expect(calculadora.eval('6 + 7')).to.equal(13);
     });
+
+    it('eval() should compute (3 + 4 + 3)', function(){
+        expect(calculadora.eval('3 + 4 + 3')).to.equal(10);
+    });
 }); 
 
