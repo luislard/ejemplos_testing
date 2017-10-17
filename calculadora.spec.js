@@ -109,5 +109,9 @@ describe('calculadora', function(){ // no hacer arrow functions
     it('parse() should throw exception with the operators (1 + 2 6)', function(){
         expect(() => calculadora.parse('1 + 2 6')).to.throw('Unexpected item 6 found');
     });
+
+    it('eval() should compute (6 + 7)', function(){
+        expect(calculadora.eval(6 + 7)).to.equal(13);
+    });
 }); 
 
