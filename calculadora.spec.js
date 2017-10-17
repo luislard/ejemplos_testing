@@ -109,21 +109,22 @@ describe('calculadora', function(){ // no hacer arrow functions
     it('parse() should throw exception with the operators (1 + 2 6)', function(){
         expect(() => calculadora.parse('1 + 2 6')).to.throw('Unexpected item 6 found');
     });
+    describe('eval()', function(){
+        it('should compute (6 + 7)', function(){
+            expect(calculadora.eval('6 + 7')).to.equal(13);
+        });
 
-    it('eval() should compute (6 + 7)', function(){
-        expect(calculadora.eval('6 + 7')).to.equal(13);
-    });
+        it('should compute (3 + 4 + 3)', function(){
+            expect(calculadora.eval('3 + 4 + 3')).to.equal(10);
+        });
 
-    it('eval() should compute (3 + 4 + 3)', function(){
-        expect(calculadora.eval('3 + 4 + 3')).to.equal(10);
-    });
+        it('should compute (3 + 4 - 3)', function(){
+            expect(calculadora.eval('3 + 4 - 3')).to.equal(4);
+        });
 
-    it('eval() should compute (3 + 4 - 3)', function(){
-        expect(calculadora.eval('3 + 4 - 3')).to.equal(4);
-    });
-
-    it('eval() should compute (3 - 4 - 3)', function(){
-        expect(calculadora.eval('3 - 4 - 3')).to.equal(-4);
+        it('should compute (3 - 4 - 3)', function(){
+            expect(calculadora.eval('3 - 4 - 3')).to.equal(-4);
+        });
     });
 }); 
 
