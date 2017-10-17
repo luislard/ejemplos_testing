@@ -12,6 +12,10 @@ Calculadora.prototype.operators = [
         operator_multiply
     ];
 
+Calculadora.prototype.log = function(args){
+    console.log(args);
+}
+
 Calculadora.prototype.sum = function(a = 0, b = 0){
     return a + b;
 }
@@ -54,6 +58,7 @@ Calculadora.prototype.parse = function(expression){
             }
         }
     }
+    this.log(result);
     return result;
 }
 

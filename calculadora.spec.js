@@ -109,6 +109,15 @@ describe('calculadora', function(){ // no hacer arrow functions
     it('parse() should throw exception with the operators (1 + 2 6)', function(){
         expect(() => calculadora.parse('1 + 2 6')).to.throw('Unexpected item 6 found');
     });
+
+    it('parse() should write result to log', function(){
+        sinon.spy(calculadora, 'log');
+        calculadora.parse('1 + 2');
+        expect(calculadora.log.callCount).to.equal(1);
+        calculadora.log.restore();
+    });
+
+
     describe('eval()', function(){
         it('should compute (6 + 7)', function(){
             sinon.stub(calculadora, 'parse').callsFake(()=>{
