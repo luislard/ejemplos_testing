@@ -2,6 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const Calculadora = require('./calculadora');
 const sinon = require('sinon');
+const rewire = require('rewire');
 
 describe('calculadora', function(){ // no hacer arrow functions
 
@@ -153,6 +154,38 @@ describe('calculadora', function(){ // no hacer arrow functions
 
         // it.only hace que solo se evalue un test
         // xit hace qu eel test no se compruebe
+    });
+
+    it('sumaPromise() should return a promise', function(){
+        expect(calculadora.sumaPromise(1,5)).to.be.a('promise');
+    });
+
+    it('sumaPromise() should resolve to sum of 4 + 5', function(done){
+        calculadora.sumaPromise(4,5).then(res => {
+            expect(res).to.equal(9);
+            done();
+        });
+    });
+
+    it('sumaPromise() should can be used with async/await', async function(){
+        const resultado = await calculadora.sumaPromise(4,5);
+        expect(resultado).to.equal(9);
+    });
+
+    it('fileHeader() should read the first line of file', function(done){
+        const Calculadora = rewire('./calculadora.js');
+        Calculadora.__set__('fs', {
+            readFile(file,cb){
+                cb(null, 'primera linea\nSegunda linea');
+            }
+        });
+        const calculadora = new Calculadora();
+
+
+        calculadora.fileHeader('zzz.xy', function(err, result){
+            expect(result).to.equal('primera linea');
+            done();
+        });
     });
 }); 
 

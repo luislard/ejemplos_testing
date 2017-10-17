@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 
 function Calculadora() {}
 
@@ -89,6 +91,20 @@ Calculadora.prototype.eval = function(expression) {
         operator = null;
     }
     return result;
+};
+
+Calculadora.prototype.sumaPromise = function(a,b){
+    return new Promise((resolve,reject)=>{
+        resolve(a + b);
+    });
+}
+
+Calculadora.prototype.fileHeader = function(file, callback){
+    fs.readFile(file, (err, data) => {
+        const firstLine = data.split('\n')[0];
+        callback(null, firstLine);
+    });
+    
 };
 
 module.exports = Calculadora; 
