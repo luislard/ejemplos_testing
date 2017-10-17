@@ -17,7 +17,16 @@ Calculadora.prototype.sumAfter = function(a = 0, b = 0, ms, callback){
 }
 
 Calculadora.prototype.parse = function(expression){
-    return [4,'+',6];
+    const result = [];
+    for (let item of expression.split(' ')) {
+        if(item === '+' || item === '-'){
+            result.push(item);
+        }
+        else {
+            result.push(Number(item));
+        }
+    }
+    return result;
 }
 
 module.exports = Calculadora; 

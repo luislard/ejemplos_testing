@@ -80,5 +80,17 @@ describe('calculadora', function(){ // no hacer arrow functions
     it('parse() should decompose expression and return array', function(){
         expect(calculadora.parse('4 + 6')).to.deep.equal([4,'+',6]);
     });
+
+    it('parse() should decompose expression and return other array', function(){
+        expect(calculadora.parse('5 + 8')).to.deep.equal([5,'+',8]);
+    });
+
+    it('parse() should decompose expression 1 + 2 + 3', function(){
+        expect(calculadora.parse('1 + 2 + 3')).to.deep.equal([1,'+',2,'+',3]);
+    });
+
+    it('parse() should decompose expression 1 - 6', function(){
+        expect(calculadora.parse('1 - 6')).to.deep.equal([1,'-',6]);
+    });
 }); 
 
