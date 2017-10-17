@@ -111,18 +111,22 @@ describe('calculadora', function(){ // no hacer arrow functions
     });
     describe('eval()', function(){
         it('should compute (6 + 7)', function(){
+            sinon.stub(calculadora, 'parse').returns([6,'+',7]);
             expect(calculadora.eval('6 + 7')).to.equal(13);
         });
 
         it('should compute (3 + 4 + 3)', function(){
+            sinon.stub(calculadora, 'parse').returns([3,'+',4,'+',3]);
             expect(calculadora.eval('3 + 4 + 3')).to.equal(10);
         });
 
         it('should compute (3 + 4 - 3)', function(){
+            sinon.stub(calculadora, 'parse').returns([3,'+',4,'-',3]);
             expect(calculadora.eval('3 + 4 - 3')).to.equal(4);
         });
 
         it('should compute (3 - 4 - 3)', function(){
+            sinon.stub(calculadora, 'parse').returns([3,'-',4,'-',3]);
             expect(calculadora.eval('3 - 4 - 3')).to.equal(-4);
         });
     });
