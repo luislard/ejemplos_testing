@@ -37,7 +37,12 @@ Calculadora.prototype.parse = function(expression){
             if (isNaN(number)){
                 throw new TypeError(`Unexpected item ${item} found`);
             }else{
-                result.push(number);
+                if(index % 2 !== 0){
+                    throw new TypeError(`Unexpected item ${item} found`);
+                }
+                else{
+                    result.push(number);
+                }
             }
         }
     }

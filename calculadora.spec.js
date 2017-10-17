@@ -99,11 +99,15 @@ describe('calculadora', function(){ // no hacer arrow functions
     // otra forma de hacer lo anterior
     it('parse() (otra forma) should throw exception with the operators (1 - + 6)', function(){
         const throwingFunction = calculadora.parse.bind(calculadora,'1 - + 6');
-        expect(throwingFunction).to.throw();
+        expect(throwingFunction).to.throw('Unexpected item + found');
     });
 
     it('parse() should throw exception with the operators (1 + A)', function(){
-        expect(() => calculadora.parse('1 + A')).to.throw();
+        expect(() => calculadora.parse('1 + A')).to.throw('Unexpected item A found');
+    });
+
+    it('parse() should throw exception with the operators (1 + 2 6)', function(){
+        expect(() => calculadora.parse('1 + 2 6')).to.throw('Unexpected item 6 found');
     });
 }); 
 
