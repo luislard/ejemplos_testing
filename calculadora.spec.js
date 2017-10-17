@@ -3,6 +3,7 @@ const expect = chai.expect;
 const Calculadora = require('./calculadora');
 const sinon = require('sinon');
 const rewire = require('rewire');
+const nock = require('nock');
 
 describe('calculadora', function(){ // no hacer arrow functions
 
@@ -186,6 +187,14 @@ describe('calculadora', function(){ // no hacer arrow functions
             expect(result).to.equal('primera linea');
             done();
         });
+    });
+
+    it('httpGetName should use network request to obtain name', async function (){
+        nock('https://swapi.co')
+            .get('/api/people/1')
+            .reply(200,{name:'FAKENAME'});
+        const name = await calculadora.httpGetName();
+        expect(name).to.equal('FAKENAME');
     });
 }); 
 

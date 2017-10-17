@@ -1,4 +1,5 @@
 var fs = require('fs');
+const axios = require('axios'); // libreria para hacer peticiones http, es como request solo que tal ves con mas utilidades
 
 
 function Calculadora() {}
@@ -106,5 +107,10 @@ Calculadora.prototype.fileHeader = function(file, callback){
     });
     
 };
+
+Calculadora.prototype.httpGetName = async function(){
+    const res = await axios.get('https://swapi.co/api/people/1');
+    return res.data.name;
+}
 
 module.exports = Calculadora; 
