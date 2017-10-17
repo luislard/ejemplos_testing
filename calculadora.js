@@ -1,8 +1,16 @@
 
 function Calculadora() {}
 
+const operator_add = '+';
+const operator_subtract = '-';
+const operator_multiply = '*';
 
-Calculadora.prototype.operators = ['+','-','*'];
+// Calculadora.prototype.operators = ['+','-','*'];
+Calculadora.prototype.operators = [
+        operator_add,
+        operator_subtract,
+        operator_multiply
+    ];
 
 Calculadora.prototype.sum = function(a = 0, b = 0){
     return a + b;
@@ -66,9 +74,9 @@ Calculadora.prototype.eval = function(expression) {
         }
         // si no es el primero hago la operacion guardada
         switch (operator) {
-            case '+': result += item; break;
-            case '-': result -= item; break;
-            case '*': result *= item; break;
+            case operator_add: result += item; break;
+            case operator_subtract: result -= item; break;
+            case operator_multiply: result *= item; break;
            default: 
             throw new TypeError(`Unexpected operator ${operator} found`);
             break;

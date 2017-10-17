@@ -141,6 +141,9 @@ describe('calculadora', function(){ // no hacer arrow functions
             expect(calculadora.eval('3 + 4 * 3')).to.equal(21);
             calculadora.parse.restore();
         });
+
+        // it.only hace que solo se evalue un test
+        // xit hace qu eel test no se compruebe
     });
 }); 
 
