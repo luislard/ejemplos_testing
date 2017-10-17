@@ -111,8 +111,11 @@ describe('calculadora', function(){ // no hacer arrow functions
     });
     describe('eval()', function(){
         it('should compute (6 + 7)', function(){
-            sinon.stub(calculadora, 'parse').returns([6,'+',7]);
+            sinon.stub(calculadora, 'parse').callsFake(()=>{
+                return [6,'+',7]
+            });
             expect(calculadora.eval('6 + 7')).to.equal(13);
+            calculadora.parse.restore();
         });
 
         it('should compute (3 + 4 + 3)', function(){
