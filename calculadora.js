@@ -2,7 +2,7 @@
 function Calculadora() {}
 
 
-Calculadora.prototype.operators = ['+','-'];
+Calculadora.prototype.operators = ['+','-','*'];
 
 Calculadora.prototype.sum = function(a = 0, b = 0){
     return a + b;
@@ -68,6 +68,7 @@ Calculadora.prototype.eval = function(expression) {
         switch (operator) {
             case '+': result += item; break;
             case '-': result -= item; break;
+            case '*': result *= item; break;
            default: 
             throw new TypeError(`Unexpected operator ${operator} found`);
             break;

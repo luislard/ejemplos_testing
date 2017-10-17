@@ -135,6 +135,12 @@ describe('calculadora', function(){ // no hacer arrow functions
             expect(calculadora.eval('3 - 4 - 3')).to.equal(-4);
             calculadora.parse.restore();
         });
+
+        it('should compute (3 + 4 * 3)', function(){
+            sinon.stub(calculadora, 'parse').returns([3,'+',4,'*',3]);
+            expect(calculadora.eval('3 + 4 * 3')).to.equal(21);
+            calculadora.parse.restore();
+        });
     });
 }); 
 
